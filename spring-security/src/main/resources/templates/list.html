@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    </head>
+    <body>
+        <h2>Address from address book</h2>
+        <table border="1">
+            <tr>
+                <th>id</th>
+                <th>name</th>
+                <th>phone</th>
+                <th>address</th>
+            </tr>
+            <tr th:each="address : ${addresses}">
+                <td th:utext="${address.id}">index</td>
+                <td th:utext="${address.name}">count</td>
+                <td th:utext="${address.phone}">size</td>
+                <td th:utext="${address.address}">even</td>
+            </tr>
+        </table>
+    </body>
+</html>
