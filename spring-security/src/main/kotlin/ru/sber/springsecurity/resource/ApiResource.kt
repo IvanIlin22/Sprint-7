@@ -3,6 +3,7 @@ package ru.sber.springsecurity.resource
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
+import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.web.bind.annotation.*
 import ru.sber.springsecurity.entity.AddressBook
 import ru.sber.springsecurity.service.AddressBookService
@@ -40,6 +41,7 @@ class ApiResource @Autowired constructor(private val addressBookService : Addres
         return ResponseEntity(address, HttpStatus.OK)
     }
 
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @DeleteMapping("/{id}/delete")
     public fun deleteAddress(@PathVariable("id") id: Int) {
         addressBookService.deleteAddressBook(id)
